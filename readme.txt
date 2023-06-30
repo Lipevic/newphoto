@@ -1,0 +1,1 @@
+aqui estamos criando uma plataforma de video e foto com o que eu aprendi em programação JS -
