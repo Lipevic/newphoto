@@ -1,14 +1,15 @@
 import fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import { contentsroute } from './routes/content'
+import { genreroute } from './routes/genre'
+import cors from '@fastify/cors'
 
 const app = fastify()
-const prisma = new PrismaClient()
 
-app.get('/users', async () => {
-  const users = await prisma.user.findMany()
-
-  return users
+app.register(cors, {
+  origin: true, //  em produção se coloca o URL de quem vai fazer as manutenções da aplicação
 })
+app.register(contentsroute)
+app.register(genreroute)
 
 app
   .listen({
